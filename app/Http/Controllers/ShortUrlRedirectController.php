@@ -15,6 +15,7 @@ class ShortUrlRedirectController extends Controller
             abort(404, 'Short url not found');
         }
 
+        $url->update(['click_count' => $url->click_count + 1]);
         app((OriginalUrlRedirectController::class)->redirectedToOrinalUrl($url));
 
     }
