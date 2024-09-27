@@ -16,7 +16,7 @@ class ShortUrlRedirectController extends Controller
         }
 
         $url->update(['click_count' => $url->click_count + 1]);
-        app((OriginalUrlRedirectController::class)->redirectedToOrinalUrl($url));
+        return app(OriginalUrlRedirectController::class)->redirectedToOrinalUrl($url);
 
     }
 }
