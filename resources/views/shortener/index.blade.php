@@ -79,7 +79,7 @@
                 </button>
             </div>
 
-            <form class="mt-6 space-y-6" method="post">
+            <form class="mt-6 space-y-6" method="post" action="{{ route('url.shortener') }}">
                 @csrf
                 <div>
                     <x-input-label class="text-white" for="name" :value="__('Name')"/>
@@ -94,16 +94,16 @@
                                  autocomplete="url"/>
                     <x-input-error class="mt-2" :messages="$errors->get('url')"/>
                 </div>
-            </form>
 
-            <div class="mt-4 flex gap-2 justify-end">
-                <x-secondary-button @click="createShortUrl = false">
-                    Close
-                </x-secondary-button>
-                <x-primary-button type="submit">
-                    Submit
-                </x-primary-button>
-            </div>
+                <div class="mt-4 flex gap-2 justify-end">
+                    <x-secondary-button type="button" @click="createShortUrl = false">
+                        Close
+                    </x-secondary-button>
+                    <x-primary-button type="submit">
+                        Submit
+                    </x-primary-button>
+                </div>
+            </form>
         </div>
     </div>
 
