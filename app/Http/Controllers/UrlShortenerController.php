@@ -15,7 +15,8 @@ class UrlShortenerController extends Controller
      */
     public function index()
     {
-        $shortenedUrls = UrlShortener::get();
+        $authId = Auth::guard('web')->id();
+        $shortenedUrls = UrlShortener::where('user_id', $authId)->get();
 
         return view('dashboard', compact('shortenedUrls'));
     }
