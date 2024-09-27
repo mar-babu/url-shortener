@@ -13,6 +13,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', 'index')->name('dashboard');
         Route::post('/url/shortener', 'urlShortener')->name('url.shortener');
     });
+    //redirect short url
+    Route::get('/{shortUrl}', [\App\Http\Controllers\ShortUrlRedirectController::class, 'redirectedToOriginalUrl'])->name('redirected.to.original.url');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

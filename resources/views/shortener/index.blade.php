@@ -52,7 +52,7 @@
                         {{ $item->name }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $item->shorten_url }}
+                        <a href="{{ route('redirected.to.original.url') }}">https://{{ $item->shorten_url }}</a>
                     </td>
                     <td class="px-6 py-4">
                         {{ $item->original_url }}
