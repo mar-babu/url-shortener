@@ -21,6 +21,9 @@
             </div>
         </div>
     </div>
+
+    <span><x-input-error class="mt-2" :messages="$errors->get('url')"/></span>
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -42,23 +45,33 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Md. Abdur Rahman's LinkedIn profile
-            </th>
-            <td class="px-6 py-4">
-                https://www.linkedin.com/in/md-abdur-rahman-368330139
-            </td>
-            <td class="px-6 py-4">
-                https://qaFxs4dFRecGjol
-            </td>
-            <td class="px-6 py-4">
-                22
-            </td>
-            <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-            </td>
-        </tr>
+        @if($shortenedUrls->isNotEmpty())
+            @foreach($shortenedUrls as $item)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $item->name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ $item->shorten_url }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->original_url }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $item->click_count }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                </tr>
+
+            @endforeach
+
+        @else
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <p>no urls yet</p>
+            </tr>
+        @endif
 
         </tbody>
     </table>
