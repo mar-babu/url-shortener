@@ -14,7 +14,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/url/shortener', 'urlShortener')->name('url.shortener');
     });
     //redirect short url
-    Route::get('/{shortUrl}', [\App\Http\Controllers\ShortUrlRedirectController::class, 'redirectedToOriginalUrl'])->name('redirected.to.original.url');
+    Route::get('/{shortUrl}', [\App\Http\Controllers\ShortUrlRedirectController::class, 'redirectedToOriginalUrl'])
+        ->where('shortUrl', '[A-Za-z0-9]{8,}')
+        ->name('redirected.to.original.url');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
