@@ -4,11 +4,12 @@
 
 This Laravel-based URL shortener allows users to generate short URLs from long URLs and track their usage. It includes user management, statistics, and security features:
 
-- [Try live:](https://url-shortener.ar-techpro.com)
-- [Public api:](https://url-shortener.ar-techpro.comapi/url/shortener)
+- [🚀Try live:](https://url-shortener.ar-techpro.com)
+- 📂Api POST: ```https://url-shortener.ar-techpro.com/api/url/shortener```
+- 🚚Api GET: ```https://url-shortener.ar-techpro.comapi/url/shortener/api/all/shortened/urls```
 
 
-### Key Features
+### Key Features🎉
 - URL Shortening: ```Submit long URLs via a web form to generate short, shareable links.```
 - Redirection: ```Short URLs automatically redirect to the original long URLs.```
 - Click Tracking: ```Track and display how many times each short URL is accessed.```
